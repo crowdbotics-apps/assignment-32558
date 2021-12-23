@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from home.models import App
-from .serializers import AppSerializer
+from home.models import App, Plans, Subscriptions
+from .serializers import AppSerializer, PlansSerializer, SubscriptionsSerializer
 from rest_framework import authentication
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.viewsets import ModelViewSet, ViewSet
@@ -41,3 +41,21 @@ class AppViewSet(viewsets.ModelViewSet):
         authentication.TokenAuthentication,
     )
     queryset = App.objects.all()
+
+
+class SubscriptionsViewSet(viewsets.ModelViewSet):
+    serializer_class = SubscriptionsSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Subscriptions.objects.all()
+
+
+class PlansViewSet(viewsets.ModelViewSet):
+    serializer_class = PlansSerializer
+    authentication_classes = (
+        authentication.SessionAuthentication,
+        authentication.TokenAuthentication,
+    )
+    queryset = Plans.objects.all()
