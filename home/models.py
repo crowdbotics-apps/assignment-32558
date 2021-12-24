@@ -26,16 +26,16 @@ class App(models.Model):
     )
     user = models.ForeignKey(
         "users.User",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="app_user",
     )
     subscription = models.OneToOneField(
         "home.Subscriptions",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="app_subscription",
     )
 
@@ -51,23 +51,23 @@ class Subscriptions(models.Model):
     )
     app = models.OneToOneField(
         "home.App",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="subscriptions_app",
     )
     plan = models.OneToOneField(
         "home.Plans",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="subscriptions_plan",
     )
     user = models.ForeignKey(
         "users.User",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
+        on_delete=models.CASCADE,
         related_name="subscriptions_user",
     )
 
