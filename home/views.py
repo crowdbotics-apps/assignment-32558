@@ -1,4 +1,4 @@
-from .models import App, Plans, Subscriptions
+from .models import App, Plan, Subscription
 from django.views.generic import CreateView, UpdateView, DetailView, ListView
 from django.shortcuts import render
 
