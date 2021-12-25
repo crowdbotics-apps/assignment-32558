@@ -55,35 +55,37 @@ class App(models.Model):
         auto_now=True,
     )
 
+
 class Subscription(models.Model):
     "Generated Model"
-    active = models.BooleanField()
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-    )
-    updated_at = models.DateTimeField(
-        auto_now=True,
-    )
-    app = models.OneToOneField(
-        "home.App",
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
-        related_name="subscription_app",
-    )
-    plan = models.OneToOneField(
-        "home.Plan",
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
-        related_name="subscription_plan",
-    )
+
     user = models.ForeignKey(
         "users.User",
         on_delete=models.CASCADE,
-        null=True,
-        blank=True,
         related_name="subscription_user",
+        editable=False
+    )
+
+    plan = models.OneToOneField(
+        "home.Plan",
+        on_delete=models.CASCADE,
+        related_name="subscription_plan",
+    )
+
+    app = models.OneToOneField(
+        "home.App",
+        on_delete=models.CASCADE,
+        related_name="subscription_app",
+    )
+
+    active = models.BooleanField()
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True,
     )
 
 
