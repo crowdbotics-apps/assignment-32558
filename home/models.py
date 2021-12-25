@@ -7,40 +7,55 @@ class App(models.Model):
     name = models.CharField(
         max_length=50,
     )
-    description = models.CharField(
-        max_length=256,
+    description = models.TextField(blank=True)
+
+    # class _Type(models.TextChoices):
+
+    #     web = "Web", "Web"
+    #     mobile = "Mobile", "Mobile"
+
+    TYPE_CHOICES = (
+        ("Web", "Web"),
+        ("Mobile", "Mobile")
     )
-    type = models.CharField(
-        max_length=256,
+
+    type = models.TextField(choices=TYPE_CHOICES)
+
+    # class _Frameworks(models.TextChoices):
+
+    #     django = "Django", "Django"
+    #     react_native = "React Native", "React Native"
+
+    FW_CHOICES = (
+        ("Django", "Django"),
+        ("React Native", "React Native")
     )
-    framework = models.CharField(
-        max_length=256,
+
+    framework = models.TextField(choices=FW_CHOICES)
+    domain_name = models.CharField(max_length=50, blank=True)
+    screen_shot = models.URLField("Screenshot", blank=True, editable=False)
+    user = models.ForeignKey(
+        "users.User",
+        on_delete=models.CASCADE,
+        blank=True,
+        related_name="app_user",
+        editable=False
     )
-    domain_name = models.URLField()
-    screen_shot = models.URLField()
+    subscription = models.OneToOneField(
+        "home.Subscription",
+        on_delete=models.DO_NOTHING,
+        blank=True,
+        related_name="app_subscription",
+        editable=False
+    )
     created_at = models.DateTimeField(
         auto_now_add=True,
     )
     updated_at = models.DateTimeField(
         auto_now=True,
     )
-    user = models.ForeignKey(
-        "users.User",
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
-        related_name="app_user",
-    )
-    subscription = models.OneToOneField(
-        "home.Subscriptions",
-        on_delete=models.CASCADE,
-        null=True,
-        blank=True,
-        related_name="app_subscription",
-    )
 
-
-class Subscriptions(models.Model):
+class Subscription(models.Model):
     "Generated Model"
     active = models.BooleanField()
     created_at = models.DateTimeField(
@@ -54,25 +69,25 @@ class Subscriptions(models.Model):
         on_delete=models.CASCADE,
         null=True,
         blank=True,
-        related_name="subscriptions_app",
+        related_name="subscription_app",
     )
     plan = models.OneToOneField(
-        "home.Plans",
+        "home.Plan",
         on_delete=models.CASCADE,
         null=True,
         blank=True,
-        related_name="subscriptions_plan",
+        related_name="subscription_plan",
     )
     user = models.ForeignKey(
         "users.User",
         on_delete=models.CASCADE,
         null=True,
         blank=True,
-        related_name="subscriptions_user",
+        related_name="subscription_user",
     )
 
 
-class Plans(models.Model):
+class Plan(models.Model):
     "Generated Model"
     name = models.CharField(
         max_length=20,

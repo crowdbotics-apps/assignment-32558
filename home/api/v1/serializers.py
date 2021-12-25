@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from home.models import App, Plans, Subscriptions
+from home.models import App, Plan, Subscription
 from django.http import HttpRequest
 from django.utils.translation import ugettext_lazy as _
 from allauth.account import app_settings as allauth_settings
@@ -82,13 +82,13 @@ class AppSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class SubscriptionsSerializer(serializers.ModelSerializer):
+class SubscriptionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Subscriptions
+        model = Subscription
         fields = "__all__"
 
 
-class PlansSerializer(serializers.ModelSerializer):
+class PlanSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Plans
+        model = Plan
         fields = "__all__"
