@@ -10,9 +10,9 @@ from home.api.v1.viewsets import (
 router = DefaultRouter()
 router.register("signup", SignupViewSet, basename="signup")
 router.register("login", LoginViewSet, basename="login")
-router.register("app", AppViewSet)
-router.register("subscription", SubscriptionViewSet)
-router.register("plan", PlanViewSet)
+router.register("apps", AppViewSet)
+router.register("subscriptions", SubscriptionViewSet)
+router.register("plans", PlanViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
