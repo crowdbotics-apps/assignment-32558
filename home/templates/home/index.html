@@ -9,15 +9,20 @@
       {% comment %} <div class="jumbotron mt-5 editable" data-remote="{{ homepage.api }}" data-field="{{ homepage.field }}">
         {{ homepage.body|safe }}
       </div> {% endcomment %}
+      <a href="#" class="btn btn-primary">Create App</a>
       <div class="row mt-0 mb-5">
           {% for app in apps %}
               <div class="col-md-4 mt-5">
                   <div class="card">
-                    <div class="card-header">
+                    <div class="card-header d-flex justify-content-between align-items-center">
                       {{app.name}}
+                      <a href="#" class="btn btn-primary">Edit</a>
                     </div>
                     <div class="card-body">
-                      <p class="card-text">User id: {{app.user.id}}</p>
+                      <p class="card-text">{{app.description}}</p>
+                      <p class="card-text">Type: {{app.type}}</p>
+                      <p class="card-text">Framework: {{app.framework}}</p>
+                      <p class="card-text">Domain: {{app.domain_name}}</p>
                     </div>
                   </div>
               </div>
