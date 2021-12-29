@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 
 def home(request):
-    
+
     apps = App.objects.filter(user=request.user.id)
     context = {"apps": apps}
     return render(request, "home/index.html", context)
