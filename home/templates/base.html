@@ -80,7 +80,7 @@
         });
 
         function api_call(url, data, method='PATCH'){
-            $.ajax({
+            return $.ajax({
                 type: method,
                 url: url,
                 data: data,
