@@ -40,6 +40,10 @@ class AppViewSet(viewsets.ModelViewSet):
         authentication.SessionAuthentication,
         authentication.TokenAuthentication,
     )
+    
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+    
     queryset = App.objects.all()
 
 
