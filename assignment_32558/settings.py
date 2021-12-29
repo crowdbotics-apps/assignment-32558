@@ -65,6 +65,7 @@ THIRD_PARTY_APPS = [
     "django_extensions",
     "drf_yasg",
     "storages",
+    'bootstrap_modal_forms',
 ]
 MODULES_APPS = get_modules()
 
