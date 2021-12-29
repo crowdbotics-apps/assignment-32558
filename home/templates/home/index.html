@@ -10,7 +10,7 @@
       <div class="row mt-0 mb-5">
         {% if apps|length > 0 %}
           {% for app in apps %}
-            {% include "home/app.html" with app=app only %}
+            {% include "home/app_card.html" with app=app only %}
           {% endfor %}
         {% else %}
               Currently there are no Apps!
