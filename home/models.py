@@ -45,6 +45,7 @@ class App(models.Model):
         "home.Subscription",
         on_delete=models.DO_NOTHING,
         blank=True,
+        null=True,
         related_name="app_subscription",
         editable=False
     )
